@@ -1,12 +1,12 @@
 #ifndef tree_node_h
 #define tree_node_h
 
-#define TYPE char
+template <class T>
 
 struct TreeNode {
-	TYPE element;
-	TreeNode *leftChild;
-	TreeNode *rightChild;
+	T element;
+	TreeNode<T> *leftChild;
+	TreeNode<T> *rightChild;
 };
 
 #endif

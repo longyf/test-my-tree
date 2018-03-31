@@ -7,9 +7,10 @@
 
 using namespace std;
 
+template <class T>
 class Tree {
 	public:
-		Tree(TreeNode *r=NULL):root(r){}
+		Tree(TreeNode<T> *r=NULL):root(r){}
 		Tree(int node_num);
 		~Tree();
 
@@ -27,12 +28,12 @@ class Tree {
 		void postOrder();
 		void levelOrder();
 	private:
-		TreeNode *root;
+		TreeNode<T> *root;
 		int theSize;
-		void preOrder(TreeNode *parent);
-		void inOrder(TreeNode *parent);
-		void postOrder(TreeNode *parent);
-		void levelOrder(TreeNode *parent);
+		void preOrder(TreeNode<T> *parent);
+		void inOrder(TreeNode<T> *parent);
+		void postOrder(TreeNode<T> *parent);
+		void levelOrder(TreeNode<T> *parent);
 };
 
 void Tree::preOrder() {
@@ -41,7 +42,7 @@ void Tree::preOrder() {
 	cout<<endl;
 }
 
-void Tree::preOrder(TreeNode *parent) {
+void Tree::preOrder(TreeNode<T> *parent) {
 	if (parent != NULL) {
 		cout<<parent->element<<" ";
 		preOrder(parent->leftChild);
@@ -55,7 +56,7 @@ void Tree::inOrder() {
     cout<<endl;
 }
 
-void Tree::inOrder(TreeNode *parent) {
+void Tree::inOrder(TreeNode<T> *parent) {
     if (parent != NULL) {
         inOrder(parent->leftChild);
         cout<<parent->element<<" ";
@@ -69,7 +70,7 @@ void Tree::postOrder() {
     cout<<endl;
 }
 
-void Tree::postOrder(TreeNode *parent) {
+void Tree::postOrder(TreeNode<T> *parent) {
     if (parent != NULL) {
         postOrder(parent->leftChild);
         postOrder(parent->rightChild);
@@ -83,8 +84,8 @@ void Tree::levelOrder() {
 	cout<<endl;
 }
 
-void Tree::levelOrder(TreeNode *parent) {
-	list<TreeNode *> list;
+void Tree::levelOrder(TreeNode<T> *parent) {
+	list<TreeNode<T> *> list;
 	while (parent != NULL) {
 		cout<<parent->element<<" ";
 		if (parent->leftChild != NULL) list.push_back(parent->leftChild);
@@ -98,16 +99,16 @@ void Tree::levelOrder(TreeNode *parent) {
 }
 
 Tree::Tree(int node_num) {
-	root=new TreeNode[node_num];
+	root=new TreeNode<T>[node_num];
 	theSize=node_num;
 
-	char ch='A';
+/*	char ch='A';
 
 	for (int i=0; i<node_num; ++i) {
 		root[i].element=ch+i;
 		root[i].leftChild=NULL;
 		root[i].rightChild=NULL;
-	}
+	}*/
 }
 
 Tree::~Tree() {
@@ -119,15 +120,15 @@ void Tree::setElement(int i, char theElement) {
 }
 
 void Tree::addNodeL(int i, int j) {
-	TreeNode *parent=&root[i];
-	TreeNode *child=&root[j];
+	TreeNode<T> *parent=&root[i];
+	TreeNode<T> *child=&root[j];
 
 	parent->leftChild=child;
 }
 
 void Tree::addNodeR(int i, int j) {
-    TreeNode *parent=&root[i];
-    TreeNode *child=&root[j];
+    TreeNode<T> *parent=&root[i];
+    TreeNode<T> *child=&root[j];
 
     parent->rightChild=child;
 }
