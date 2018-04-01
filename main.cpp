@@ -4,11 +4,17 @@
 using namespace std;
 
 int main() {
-	Tree tree(5);
+	Tree<char> tree(5);
 
 	if (!tree.empty()) {
-		cout<<tree.size()<<endl;
+		cout<<"The size is "<<tree.size()<<endl;
 	}
+
+    tree.setElement(0,'A');
+    tree.setElement(1,'B');
+    tree.setElement(2,'C');
+    tree.setElement(3,'D');
+    tree.setElement(4,'E');
 
 	tree.addNodeL(0,1);
 	tree.addNodeR(0,2);

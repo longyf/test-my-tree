@@ -36,13 +36,15 @@ class Tree {
 		void levelOrder(TreeNode<T> *parent);
 };
 
-void Tree::preOrder() {
+template <class T>
+void Tree<T>::preOrder() {
 	cout<<"前序遍历：";
 	preOrder(root);
 	cout<<endl;
 }
 
-void Tree::preOrder(TreeNode<T> *parent) {
+template <class T>
+void Tree<T>::preOrder(TreeNode<T> *parent) {
 	if (parent != NULL) {
 		cout<<parent->element<<" ";
 		preOrder(parent->leftChild);
@@ -50,13 +52,15 @@ void Tree::preOrder(TreeNode<T> *parent) {
 	}
 }
 
-void Tree::inOrder() {
+template <class T>
+void Tree<T>::inOrder() {
     cout<<"中序遍历：";
     inOrder(root);
     cout<<endl;
 }
 
-void Tree::inOrder(TreeNode<T> *parent) {
+template <class T>
+void Tree<T>::inOrder(TreeNode<T> *parent) {
     if (parent != NULL) {
         inOrder(parent->leftChild);
         cout<<parent->element<<" ";
@@ -64,13 +68,15 @@ void Tree::inOrder(TreeNode<T> *parent) {
     }
 }
 
-void Tree::postOrder() {
+template <class T>
+void Tree<T>::postOrder() {
     cout<<"后序遍历：";
     postOrder(root);
     cout<<endl;
 }
 
-void Tree::postOrder(TreeNode<T> *parent) {
+template <class T>
+void Tree<T>::postOrder(TreeNode<T> *parent) {
     if (parent != NULL) {
         postOrder(parent->leftChild);
         postOrder(parent->rightChild);
@@ -78,13 +84,15 @@ void Tree::postOrder(TreeNode<T> *parent) {
     }
 }
 
-void Tree::levelOrder() {
+template <class T>
+void Tree<T>::levelOrder() {
 	cout<<"层次遍历：";
 	levelOrder(root);
 	cout<<endl;
 }
 
-void Tree::levelOrder(TreeNode<T> *parent) {
+template <class T>
+void Tree<T>::levelOrder(TreeNode<T> *parent) {
 	list<TreeNode<T> *> list;
 	while (parent != NULL) {
 		cout<<parent->element<<" ";
@@ -98,35 +106,32 @@ void Tree::levelOrder(TreeNode<T> *parent) {
 	}
 }
 
-Tree::Tree(int node_num) {
+template <class T>
+Tree<T>::Tree(int node_num) {
 	root=new TreeNode<T>[node_num];
 	theSize=node_num;
-
-/*	char ch='A';
-
-	for (int i=0; i<node_num; ++i) {
-		root[i].element=ch+i;
-		root[i].leftChild=NULL;
-		root[i].rightChild=NULL;
-	}*/
 }
 
-Tree::~Tree() {
+template <class T>
+Tree<T>::~Tree() {
 	if (root!=NULL) delete []root;
 }
 
-void Tree::setElement(int i, char theElement) {
+template <class T>
+void Tree<T>::setElement(int i, char theElement) {
 	root[i].element=theElement;
 }
 
-void Tree::addNodeL(int i, int j) {
+template <class T>
+void Tree<T>::addNodeL(int i, int j) {
 	TreeNode<T> *parent=&root[i];
 	TreeNode<T> *child=&root[j];
 
 	parent->leftChild=child;
 }
 
-void Tree::addNodeR(int i, int j) {
+template <class T>
+void Tree<T>::addNodeR(int i, int j) {
     TreeNode<T> *parent=&root[i];
     TreeNode<T> *child=&root[j];
 
