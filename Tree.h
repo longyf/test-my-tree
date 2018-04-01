@@ -2,8 +2,12 @@
 #define tree_h
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include <list>
+#include <stdexcept>
 #include "Tree.h"
+//#include "myExceptions.h"
 
 using namespace std;
 
@@ -108,6 +112,13 @@ void Tree<T>::levelOrder(TreeNode<T> *parent) {
 
 template <class T>
 Tree<T>::Tree(int node_num) {
+	//奇怪，好像扔出这个异常之后，程序就停止执行了。
+	if (node_num<=0) {
+		ostringstream s;
+		s<<"Number of nodes is: "<<node_num<<", must be at least 1."<<endl;
+		throw invalid_argument (s.str());
+	}
+
 	root=new TreeNode<T>[node_num];
 	theSize=node_num;
 }

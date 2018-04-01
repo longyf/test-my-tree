@@ -1,10 +1,19 @@
 #include <iostream>
 #include "TreeNode.h"
 #include "Tree.h"
+
 using namespace std;
 
 int main() {
-	Tree<char> tree(5);
+	int length=-1;
+
+	Tree<char> tree(length);
+
+    try {Tree<char> tree(length);}
+    catch (invalid_argument e) {
+		cout << "Caught thrown exception" << endl;
+        cout << e.what() << endl;
+    }
 
 	if (!tree.empty()) {
 		cout<<"The size is "<<tree.size()<<endl;
