@@ -31,9 +31,6 @@ class Tree {
 		void inOrder();
 		void postOrder();
 		void levelOrder();
-		int height() {//not const?
-			return height(root);
-		}
 	private:
 		TreeNode<T> *root;
 		int theSize;
@@ -41,7 +38,6 @@ class Tree {
 		void inOrder(TreeNode<T> *parent);
 		void postOrder(TreeNode<T> *parent);
 		void levelOrder(TreeNode<T> *parent);
-		int height(TreeNode<T> *parent);
 };
 
 template <class T>
@@ -153,13 +149,4 @@ void Tree<T>::addNodeR(int i, int j) {
     parent->rightChild=child;
 }
 
-template <class T>
-int Tree<T>::height(TreeNode<T> *parent) {
-	if (parent==NULL) return 0;
-	
-	int hl=height(parent->leftChild);
-	int hr=height(parent->rightChild);
-
-	return hl>hr ? ++hl:++hr;
-}
 #endif
